@@ -38,6 +38,8 @@ long long int solve(long long int N) {
       return primes[i];
     }
   }
+
+  return -1; //error
 }
 
 int main(int argc, char *argv[]) {
