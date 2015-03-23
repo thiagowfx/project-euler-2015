@@ -14,9 +14,11 @@ RM="rm -f"
 usage(){
     echo "Usage:"
     echo "  To compile all executables:"
-    echo "    $0"
+    echo "    $0 compile-all"
     echo "  To clean the project directory:"
     echo "    $0 clean"
+    echo "  To compile a specific executable:"
+    echo "    $0 006"
 }
 
 clean(){
@@ -28,7 +30,7 @@ clean(){
     find . -perm +100 -type f -name "PE-???" -or -name 'a.out' -delete
 }
 
-compile(){
+compile-all(){
     find . -type f -name "PE-???.cpp" -execdir ${CC} ${CCOPTS} {} \;
 }
 
@@ -39,7 +41,10 @@ case "$@" in
     clean)
         clean
         ;;
+    compile-all)
+        compile-all
+        ;;
     *)
-        compile
+        ${CC} ${CCOPTS} $1/PE-$1.cpp -o $1/PE-$1
         ;;
 esac
