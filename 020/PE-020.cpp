@@ -1,5 +1,5 @@
 /*
- * What is the sum of the digits of the number 21000?
+ * Find the sum of the digits in the number 100!
  */
 
 #include <algorithm>
