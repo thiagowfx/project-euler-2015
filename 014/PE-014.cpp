@@ -1,6 +1,5 @@
 /*
- * There exists exactly one Pythagorean triplet for which a + b + c = 1000.
- * Find the product abc.
+ * Which starting number, under one million, produces the longest chain? (3n + 1 problem)
  */
 
 #include <algorithm>
