@@ -2,7 +2,6 @@
  * What is the 10 001st prime number?
  */
 
-#include <algorithm>
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
@@ -36,7 +35,7 @@ long long int solve(long long int N) {
   // log is base e
   long long int limit = N * (log(N) + log(log(N)));
 
-  // this only hols for n >= 6, so:
+  // this only hols for N >= 6, so:
   limit = max(limit, 13LL);
 
   return sieve(limit)[N-1];
@@ -45,6 +44,5 @@ long long int solve(long long int N) {
 int main(int argc, char *argv[]) {
   long long int number = atoll(argv[1]);
   printf("%lld\n", solve(number));
-
   return 0;
 }
