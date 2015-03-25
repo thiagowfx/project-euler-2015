@@ -7,44 +7,6 @@
 
 CC=g++
 
-CCOPTS="-O2 -g -fstrict-aliasing -Wall -Wextra -Werror -Wchar-subscripts -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wsign-compare -Wunused -Wno-unused-parameter -Wuninitialized -Winit-self -Wpointer-arith -Wredundant-decls -Wformat-nonliteral -Wno-format-zero-length -Wno-format-y2k -Wmissing-format-attribute"
+CCOPTS="-lgmp -lgmpxx -O2 -g -fstrict-aliasing -Wall -Wextra -Werror -Wchar-subscripts -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wsign-compare -Wunused -Wno-unused-parameter -Wuninitialized -Winit-self -Wpointer-arith -Wredundant-decls -Wformat-nonliteral -Wno-format-zero-length -Wno-format-y2k -Wmissing-format-attribute"
 
-RM="rm -f"
-
-usage(){
-    echo "Usage:"
-    echo "  To compile all executables:"
-    echo "    $0 compile-all"
-    echo "  To clean the project directory:"
-    echo "    $0 clean"
-    echo "  To compile a specific executable:"
-    echo "    $0 006"
-}
-
-clean(){
-    # object files
-    ${RM} **/*.o
-    ${RM} **/*.pyc
-
-    # executables
-    find . -perm +100 -type f -name "PE-???" -or -name 'a.out' -delete
-}
-
-compile-all(){
-    find . -type f -name "PE-???.cpp" -execdir ${CC} ${CCOPTS} {} \;
-}
-
-case "$@" in
-    -h|--help)
-        usage
-        ;;
-    clean)
-        clean
-        ;;
-    compile-all)
-        compile-all
-        ;;
-    *)
-        ${CC} ${CCOPTS} $1/PE-$1.cpp -o $1/PE-$1
-        ;;
-esac
+${CC} ${CCOPTS} "$@" -o "${@%%.*}"
