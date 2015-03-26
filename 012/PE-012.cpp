@@ -62,7 +62,7 @@ long long int solve(long long int N) {
       return current;
   }
 
-  return -1; //error
+  return -1; //error: this shouldn't happen
 }
 
 int main(int argc, char *argv[]) {
