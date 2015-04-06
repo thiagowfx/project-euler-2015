@@ -60,7 +60,6 @@ long long int solve() {
 }
 
 int main(int argc, char *argv[]) {
-    assert(ok(142857));
     std::cout << solve() << std::endl;
     return 0;
 }
