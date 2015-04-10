@@ -3,16 +3,16 @@
  */
 
 #include <cmath>
-#include <cstdio>
 #include <cstdlib>
+#include <iostream>
 #include <vector>
 using namespace std;
 
 vector<long long int> sieve(long long int N) {
-  vector<long long int> primes;
-  vector<bool> in(N, true);
+  std::vector<long long int> primes;
+  std::vector<bool> in(N + 1, true);
 
-  for (long long int i = 2; i <= sqrt(N); ++i) {
+  for (long long int i = 2; i * i <= N; ++i) {
     if(in[i]) {
       for (long long int j = i * i; j <= N; j += i) {
         in[j] = false;
@@ -30,10 +30,10 @@ vector<long long int> sieve(long long int N) {
 }
 
 long long int solve(long long int N) {
-  vector<long long int> primes = sieve(sqrt(N));
-  int size = primes.size();
+  std::vector<long long int> primes = sieve(sqrt(N));
+  long long int size = primes.size();
 
-  for (int i = size - 1; i >= 0; --i) {
+  for (long long int i = size - 1; i >= 0; --i) {
     if ( (N % primes[i]) == 0 ) {
       return primes[i];
     }
@@ -44,7 +44,6 @@ long long int solve(long long int N) {
 
 int main(int argc, char *argv[]) {
   long long int number = atoll(argv[1]);
-  printf("%lld\n", solve(number));
-
+  std::cout << solve(number) << std::endl;
   return 0;
 }
