@@ -3,17 +3,17 @@
  * exceed four million, find the sum of the even-valued terms.
  */
 
-#include <algorithm>
-#include <cstdio>
+#include <iostream>
 #include <cstdlib>
+#include <gmpxx.h>
 using namespace std;
 
-long long int solve(long long int limit) {
-  long long int sum = 0;
+mpz_class solve(mpz_class limit) {
+  mpz_class sum("0");
 
-  int fprev = 1;
-  int fcurr = 2;
-  int fnext = 3;
+  mpz_class fprev("1");
+  mpz_class fcurr("2");
+  mpz_class fnext("3");
 
   while(fcurr < limit) {
     sum += fcurr;
@@ -27,8 +27,7 @@ long long int solve(long long int limit) {
 }
 
 int main(int argc, char *argv[]) {
-  long long int limit = atoi(argv[1]);
-  printf("%lld\n", solve(limit));
-
+  long long int limit = atoll(argv[1]);
+  std::cout << solve(mpz_class(std::to_string(limit))) << std::endl;
   return 0;
 }
