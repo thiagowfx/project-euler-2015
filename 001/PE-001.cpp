@@ -37,7 +37,7 @@ long long int solve(int a, int b, long long int limit) {
 int main(int argc, char *argv[]) {
   int a = atoi(argv[1]);
   int b = atoi(argv[2]);
-  long long int limit = atoi(argv[3]);
+  long long int limit = atoll(argv[3]);
 
   printf("%lld\n", solve(a, b, limit));
   return 0;
