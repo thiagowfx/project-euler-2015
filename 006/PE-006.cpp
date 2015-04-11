@@ -3,37 +3,27 @@
  */
 
 #include <algorithm>
-#include <cmath>
-#include <cstdio>
 #include <cstdlib>
-#include <vector>
+#include <iostream>
+#include <gmpxx.h>
 using namespace std;
+#define sqr(x) ((x)*(x))
 
-long long int square_of_sum(long long int N) {
-  long long int sum = ((1 + N) * N) / 2;
-  return pow(sum, 2);
+mpz_class square_of_sum(mpz_class N) {
+  return sqr(((1 + N) * N) / 2);
 }
 
-long long int sum_of_squares(long long int N) {
-  long long int sum = 0;
-  for (int i = 1; i <= N; ++i)
-    sum += pow(i, 2);
-  return sum;
+mpz_class sum_of_squares(mpz_class N) {
+  return (N * (N + 1) * (2 * N + 1)) / 6;
 }
 
-long long int sum_of_squares_opt(long long int N) {
-  long long int sum = (N * (N + 1) * (2 * N + 1)) / 6;
-  return sum;
-}
-
-long long int solve(long long int N) {
-  return square_of_sum(N) - sum_of_squares_opt(N);
+mpz_class solve(long long int N) {
+  return square_of_sum(mpz_class(std::to_string(N))) - sum_of_squares(mpz_class(std::to_string(N)));
 }
 
 
 int main(int argc, char *argv[]) {
   long long int number = atoll(argv[1]);
-  printf("%lld\n", solve(number));
-
+  std::cout << solve(number) << std::endl;
   return 0;
 }
