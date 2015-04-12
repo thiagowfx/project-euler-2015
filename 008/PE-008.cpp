@@ -5,8 +5,8 @@
 #include <algorithm>
 #include <cmath>
 #include <cstring>
-#include <cstdio>
 #include <cstdlib>
+#include <iostream>
 #include <string>
 #include <vector>
 using namespace std;
@@ -50,7 +50,6 @@ long long int solve(const long long int N) {
 
 int main(int argc, char *argv[]) {
   long long int number = atoll(argv[1]);
-  printf("%lld\n", solve(number));
-
+  std::cout << solve(number) << std::endl;
   return 0;
 }
