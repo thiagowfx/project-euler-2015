@@ -10,13 +10,11 @@
 #include <vector>
 using namespace std;
 
-long long int solve(long long int N, std::ifstream& ifs) {
+long long int solve(std::ifstream& ifs, long long int N) {
   long long int m[20][20];
   for (unsigned i = 0; i < 20; ++i)
-  	for (unsigned j = 0; j < 20; ++j) {
+  	for (unsigned j = 0; j < 20; ++j)
       ifs >> m[i][j];
-      std::cout << m[i][j] << std::endl;
-    }
 
   long long int ans = -1;
 
@@ -68,8 +66,8 @@ long long int solve(long long int N, std::ifstream& ifs) {
 }
 
 int main(int argc, char *argv[]) {
-  long long int number = atoll(argv[2]);
   std::ifstream ifs(argv[1]);
-  std::cout << solve(number, ifs) << std::endl;
+  long long int number = atoll(argv[2]);
+  std::cout << solve(ifs, number) << std::endl;
   return 0;
 }
