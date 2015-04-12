@@ -68,8 +68,8 @@ long long int solve(long long int N, std::ifstream& ifs) {
 }
 
 int main(int argc, char *argv[]) {
-  long long int number = atoll(argv[1]);
-  std::ifstream ifs(argv[2]);
+  long long int number = atoll(argv[2]);
+  std::ifstream ifs(argv[1]);
   std::cout << solve(number, ifs) << std::endl;
   return 0;
 }
