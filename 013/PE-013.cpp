@@ -2,42 +2,36 @@
  * Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
  */
 
-#include <algorithm>
-#include <cmath>
-#include <cstring>
-#include <cstdio>
 #include <cstdlib>
 #include <iostream>
-#include <vector>
+#include <fstream>
 #include <gmpxx.h>
+#include <sstream>
 using namespace std;
 
-void solve() {
-  mpz_t sum, next;
-  mpz_init(sum);
-  
+std::string solve(std::ifstream& ifs, long long int number) {
+  mpz_class sum("0");
+
   for (unsigned i = 0; i < 100; ++i) {
     std::string input;
-    std::getline(std::cin, input);
+    std::getline(ifs, input);
 
-    mpz_init(next);
-    mpz_init_set_str(next, input.c_str(), 0);
-    // gmp_printf("%Zd\n", next); // TODO
-    mpz_add(sum, sum, next);
-
-    mpz_clear(next);
+    mpz_class next(input.c_str());
+    sum += next;
   }
 
-  char answer[20];
-  gmp_sprintf(answer, "%Zd\n", sum);
+  std::stringstream ss;
+  ss << sum;
+  std::string answer = ss.str().substr(0, number);
 
-  answer[10] = '\0';
-  printf("%s\n", answer);
-
-  mpz_clear(sum);
+  return answer;
 }
 
 int main(int argc, char *argv[]) {
-  solve();
+  std::ifstream ifs(argv[1]);
+  long long int number = 10;
+  if (argc == 3)
+    number = atoll(argv[2]);
+  std::cout << solve(ifs, number) << std::endl;
   return 0;
 }
