@@ -5,21 +5,21 @@
 #include <algorithm>
 #include <cassert>
 #include <cctype>
-#include <cstdio>
 #include <cstring>
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 using namespace std;
 #define LINES 15
 #define D(x) std::cout << #x << " = " << x << std::endl;
 
-int solve() {
+int solve(std::ifstream& ifs) {
     std::vector<int> in[LINES];
     for (unsigned i = 0; i < LINES; ++i) {
         for(unsigned j = 0; j < i + 1; ++j) {
             int tmp;
-            scanf("%d", &tmp);
+            ifs >> tmp;
             in[i].push_back(tmp);
         }
     }
@@ -47,7 +47,8 @@ int solve() {
     return ans;
 }
 
-int main() {
-    std::cout << solve() << std::endl;
+int main(int argc, char *argv[]) {
+    std::ifstream ifs(argv[1]);
+    std::cout << solve(ifs) << std::endl;
     return 0;
 }
