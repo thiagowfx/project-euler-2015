@@ -18,9 +18,9 @@ using namespace std;
 std::vector<long long int> mycache;
 std::vector<long long int> myprimes;
 
-vector<long long int> sieve(long long int N) {
-  vector<long long int> primes;
-  vector<bool> in(N, true);
+std::vector<long long int> sieve(long long int N) {
+  std::vector<long long int> primes;
+  std::vector<bool> in(N + 1, true);
 
   for (long long int i = 2; i * i <= N; ++i) {
     if(in[i]) {
@@ -84,21 +84,21 @@ int main(int argc, char *argv[]) {
     mycache = std::vector<long long int>(number + 1, -1);
     // myprimes = sieve(N);
 
-    assert(d(1) == 0);
-    assert(d(2) == 1);
-    assert(d(4) == 3);
-    assert(d(220) == 284);
-    assert(d(284) == 220);
-    assert(query(1) == 0);
-    assert(query(1) == 0);
-    assert(query(2) == 1);
-    assert(query(2) == 1);
-    assert(query(4) == 3);
-    assert(query(4) == 3);
-    assert(query(220) == 284);
-    assert(query(220) == 284);
-    assert(query(284) == 220);
-    assert(query(284) == 220);
+    //assert(d(1) == 0);
+    //assert(d(2) == 1);
+    //assert(d(4) == 3);
+    //assert(d(220) == 284);
+    //assert(d(284) == 220);
+    //assert(query(1) == 0);
+    //assert(query(1) == 0);
+    //assert(query(2) == 1);
+    //assert(query(2) == 1);
+    //assert(query(4) == 3);
+    //assert(query(4) == 3);
+    //assert(query(220) == 284);
+    //assert(query(220) == 284);
+    //assert(query(284) == 220);
+    //assert(query(284) == 220);
 
     std::cout << solve(number) << std::endl;
     return 0;
