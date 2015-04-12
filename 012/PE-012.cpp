@@ -66,7 +66,7 @@ long long int solve(long long int N) {
 }
 
 int main(int argc, char *argv[]) {
-  primes_g = sieve(1e7);
+  primes_g = sieve(1e8);
   long long int number = atoll(argv[1]);
   std::cout << solve(number) << std::endl;
   return 0;
