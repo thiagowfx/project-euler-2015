@@ -4,21 +4,17 @@
 
 #include <algorithm>
 #include <cmath>
-#include <cstdio>
 #include <cstdlib>
-#include <cstring>
 #include <iostream>
+#include <limits>
 #include <string>
-#include <sstream>
 using namespace std;
 
 bool isPal(long long int x) {
-  stringstream ss;
-  ss << x;
-  string s = ss.str();
-  int size = s.size();
+  std::string s = std::to_string(x);
+  unsigned size = s.size();
 
-  for (int i = 0; i < size / 2; ++i) {
+  for (unsigned i = 0; i < size / 2; ++i) {
     if (s[i] != s[size-1-i])
       return false;
   }
@@ -26,26 +22,24 @@ bool isPal(long long int x) {
   return true;
 }
 
-void solve(int n) {
-  long long int greatest = -1;
+long long int solve(long long int n) {
+  long long int greatest = std::numeric_limits<long long int>::min();
 
-  int upper = pow(10, n) - 1;
-  int lower = pow(10, n - 1);
-  for (int i = upper; i >= lower; --i) {
-    for (int j = upper; j >= lower; --j) {
+  long long int upper = pow(10, n) - 1;
+  long long int lower = pow(10, n - 1);
+  for (long long int i = upper; i >= lower; --i) {
+    for (long long int j = i; j >= lower; --j) {
       long long int tmp = i * j;
-      if (tmp > greatest && isPal(tmp))
+      if (tmp > greatest && !(tmp % 33) && isPal(tmp))
         greatest = tmp;
     }
   }
-  
-  printf("%lld\n", greatest);
+
+  return greatest;
 }
 
-
 int main(int argc, char *argv[]) {
-  int n = atoi(argv[1]);
-  solve(n);
-
+  long long int n = atoll(argv[1]);
+  std::cout << solve(n) << std::endl;
   return 0;
 }
