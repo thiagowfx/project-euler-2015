@@ -2,6 +2,6 @@ all:
 	@./compile-all.bash
 
 clean:
-	@git clean -x -f -d
+	@./compile-all.bash --clean
 
 .PHONY: clean all
