@@ -10,24 +10,17 @@
 using namespace std;
 #define sqr(x) ((x)*(x))
 
-inline long long int c(long long int a, long long int b) {
-  return sqrt(a * a + b * b);
-}
-
-inline bool ok(long long int N, long long int a, long long int b) {
-  long long int myc = c(a,b);
-  return (a + b + myc) == N && (a * a + b * b) == myc * myc;
-}
-
 long long int solve(long long int N) {
   long long int a, b;
 
-  for (a = 1; a <= N; ++a)
-    for (b = 1; b <= N; ++b)
-      if (ok(N, a, b))
-        return a * b * c(a,b);
+  for (a = 1; a <= N/2; ++a) {
+    for (b = 1; b <= N/2; ++b) {
+        long long int c = N - a - b;
+        if(sqr(a) + sqr(b) == sqr(c))
+            return a * b * c;
+    }
+  }
 
-  std::cout << "ERROR!" << std::endl;
   return -1; // error: this shouldn't happen but it is here so the compiler becomes happy
 }
 
