@@ -1,7 +1,10 @@
 #include <bits/stdc++.h>
-#define SIEVE_UPPER_LIMIT (1e7)
 
-std::vector<bool> sieve(long long int N) {
+#define SIEVE_UPPER_LIMIT (1e7)
+std::vector<long long int> primes_g;
+std::vector<bool> is_prime_g;
+
+void sieve(long long int N) {
     std::vector<long long int> primes;
     std::vector<bool> in(N + 1, true);
     in[0] = in[1] = false;
@@ -14,7 +17,27 @@ std::vector<bool> sieve(long long int N) {
         }
     }
 
-    return in;
+    primes_g = primes;
+    is_prime_g = in;
+}
+
+bool is_prime(long long int x) {
+    if (x <= SIEVE_UPPER_LIMIT)
+        return is_prime_g[x];
+    else {
+        for (auto& p : primes_g) {
+            if(!(x % p))
+                return false;
+        }
+        int last_prime = primes_g.back();
+        if(last_prime == 2)
+            ++last_prime;
+        for(int i = last_prime + 2; i * i <= x; i += 2) {
+            if(!(x % i))
+                return false;
+        }
+        return true;
+    }
 }
 
 inline long long eval(int a, int b, int n) {
@@ -22,7 +45,7 @@ inline long long eval(int a, int b, int n) {
 }
 
 long long int solve(long long int limita, long long int limitb) {
-    auto isPrime = sieve(SIEVE_UPPER_LIMIT);
+    sieve(SIEVE_UPPER_LIMIT);
 
     long long int answer = -1;
     int longest_seq_size = 0;
@@ -31,7 +54,7 @@ long long int solve(long long int limita, long long int limitb) {
         for(int b = -(limitb - 1); b <= (limitb - 1); ++b) {
             int k = 0;
             while(true) {
-                if(!isPrime[abs(eval(a, b, k))])
+                if(!is_prime(abs(eval(a, b, k))))
                     break;
                 else
                     ++k;
