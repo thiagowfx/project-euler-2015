@@ -56,12 +56,12 @@ std::string solve(long long int N) {
 }
 
 int main(int argc, char *argv[]) {
-  assert(next_perm("123") == "132");
-  assert(next_perm("132") == "213");
-  assert(next_perm("213") == "231");
-  assert(next_perm("231") == "312");
-  assert(next_perm("312") == "321");
-  assert(next_perm("321") == "123");
+  //assert(next_perm("123") == "132");
+  //assert(next_perm("132") == "213");
+  //assert(next_perm("213") == "231");
+  //assert(next_perm("231") == "312");
+  //assert(next_perm("312") == "321");
+  //assert(next_perm("321") == "123");
 
   long long int number = atoll(argv[1]);
   std::cout << solve(number) << std::endl;
