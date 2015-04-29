@@ -4,7 +4,7 @@
 std::vector<long long int> primes_g;
 std::vector<bool> is_prime_g;
 
-void sieve(long long int N) {
+void sieve(long long int N = SIEVE_UPPER_LIMIT) {
     std::vector<long long int> primes;
     std::vector<bool> in(N + 1, true);
     in[0] = in[1] = false;
