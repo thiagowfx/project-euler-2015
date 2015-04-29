@@ -2,18 +2,10 @@
  * What is the total of all the name scores in the file?
  */
 
-#include <algorithm>
-#include <cmath>
-#include <cstring>
-#include <cstdio>
-#include <cstdlib>
-#include <iostream>
-#include <string>
-#include <vector>
-#include <sstream>
+#include <bits/stdc++.h>
 using namespace std;
 
-vector<string> names;
+std::vector<string> names;
 
 inline long long int alphavalue(const std::string s) {
   long long int ret = 0;
@@ -24,10 +16,10 @@ inline long long int alphavalue(const std::string s) {
   return ret;
 }
 
-long long int solve() {
-  char input[50];
-  while (scanf("%[^,],", input) == 1)
-    names.push_back(input);
+long long int solve(std::ifstream& ifs) {
+  std::string line;
+  while(std::getline(ifs, line, ','))
+    names.push_back(line);
 
   sort(names.begin(), names.end());
 
@@ -40,6 +32,7 @@ long long int solve() {
 }
 
 int main(int argc, char *argv[]) {
-  std::cout << solve() << std::endl;
+  std::ifstream ifs(argv[1]);
+  std::cout << solve(ifs) << std::endl;
   return 0;
 }
