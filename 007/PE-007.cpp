@@ -9,7 +9,7 @@
 using namespace std;
 
 std::vector<long long int> sieve(long long int N) {
-    std::vector<long long int> primes;
+  std::vector<long long int> primes;
   std::vector<bool> in(N + 1, true);
 
   for (long long int i = 2; i <= N; ++i) {
