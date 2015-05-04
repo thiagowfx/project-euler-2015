@@ -26,9 +26,7 @@ void populate() {
 }
 
 long long int factdig(int x) {
-    std::stringstream ss;
-    ss << x;
-    std::string s = ss.str();
+    std::string s = std::to_string(x);
 
     long long int ret = 0;
     for(std::string::iterator it = s.begin(); it != s.end(); ++it) {
@@ -37,7 +35,7 @@ long long int factdig(int x) {
     return ret;
 }
 
-int ok(int x) {
+bool ok(int x) {
     return factdig(x) == x;
 }
 
@@ -52,11 +50,16 @@ long long int solve(long long int limit) {
 int main(int argc, char* argv[]) {
     populate();
 
-    assert(factdig(1) == 1);
-    assert(factdig(145) == 145);
-    assert(ok(145));
+    //assert(factdig(1) == 1);
+    //assert(factdig(145) == 145);
+    //assert(ok(145));
 
-    long long int limit = atoll(argv[1]);
+    long long int limit;
+    if(argc == 2)
+        limit = atoll(argv[1]);
+    else
+        limit = 10000000;
+
     std::cout << solve(limit) << std::endl;
     return 0;
 }
