@@ -71,7 +71,7 @@ long long int solve() {
     long long int ans = 0;
     unsigned count = 0;
 
-    assert(isTruncatablePrime(3797));
+    // assert(isTruncatablePrime(3797));
 
     for(std::vector<long long int>::iterator it = upper_bound(primes_g.begin(), primes_g.end(), 7); it != primes_g.end(); ++it) {
         if(isTruncatablePrime(*it)) {
