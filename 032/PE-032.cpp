@@ -1,3 +1,7 @@
+/*
+ * Find the sum of all products whose multiplicand/multiplier/product identity can be written as a 1 through 9 pandigital.
+ */
+
 #include <bits/stdc++.h>
 
 inline bool isPandigital(std::string s, unsigned n = 9) {
