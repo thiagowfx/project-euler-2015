@@ -61,12 +61,12 @@ long long int solve() {
 }
 
 int main(int argc, char *argv[]) {
-	assert(isPal("1221"));
-	assert(isPal(mpz_class("1221")));
-	assert(rev_and_add(mpz_class("47")) == mpz_class("121"));
-	assert(reverse("47") == "74");
-	assert(reverse(mpz_class("47")) == mpz_class("74"));
-	assert(isLychrel(mpz_class("196")));
+	//assert(isPal("1221"));
+	//assert(isPal(mpz_class("1221")));
+	//assert(rev_and_add(mpz_class("47")) == mpz_class("121"));
+	//assert(reverse("47") == "74");
+	//assert(reverse(mpz_class("47")) == mpz_class("74"));
+	//assert(isLychrel(mpz_class("196")));
 	std::cout << solve() << std::endl;
 	return 0;
 }
