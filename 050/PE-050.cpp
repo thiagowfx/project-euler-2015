@@ -47,8 +47,8 @@ bool is_prime(long long int x) {
 long long int solve(long long int limit) {
 	sieve(limit);
 
-	assert(!is_prime(15));
-	assert(!is_prime(150));
+	// assert(!is_prime(15));
+	// assert(!is_prime(150));
 	
 	long long int ans = -1;
 	long long int max_consecutives_size = 0;
