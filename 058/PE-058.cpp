@@ -106,6 +106,7 @@ long long int solve(int percentage = 10) {
 	sieve();
     populate_in_diagonal();
 
+    /*
     assert(lower(1) == 2);
     assert(lower(2) == 10);
     assert(lower(3) == 26);
@@ -132,6 +133,7 @@ long long int solve(int percentage = 10) {
     assert(count_primes_diagonal(lower(1), upper(1)) == 3);
     assert(count_primes_diagonal(lower(2), upper(2)) == 2);
     assert(count_primes_diagonal(lower(3), upper(3)) == 3);
+    */
 
     long long int n = 1;
     long long int nprimes = 0;
