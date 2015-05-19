@@ -1,13 +1,12 @@
 /*
  * If this process is continued, what is the side length of the square spiral for which the ratio of primes along both diagonals first falls below 10%?
  */
-
 #include <bits/stdc++.h>
 
 #define sqr(x) ((x)*(x))
 
-#define SIEVE_UPPER_LIMIT (1e7)
-#define LIMIT_POPULATE_IN_DIAGONAL (1e8)
+#define SIEVE_UPPER_LIMIT (1e9)
+#define LIMIT_POPULATE_IN_DIAGONAL (1e9)
 std::vector<long long int> primes_g;
 std::vector<bool> is_prime_g;
 
@@ -28,7 +27,7 @@ void sieve(long long int N = SIEVE_UPPER_LIMIT) {
     is_prime_g = in;
 }
 
-bool is_prime(long long int x) {
+inline bool is_prime(long long int x) {
     if (x <= SIEVE_UPPER_LIMIT)
         return is_prime_g[x];
     else {
@@ -69,11 +68,28 @@ inline long long int count_primes(long long int a, long long int b) {
     return ans;
 }
 
-std::functional<bool(long long int)> in_diagonal;
+std::function<bool(long long int)> in_diagonal;
 
-void populate_in_diagonal() {
-    // TODO
-    // in_diagonal = []()...
+void populate_in_diagonal(long long int limit = LIMIT_POPULATE_IN_DIAGONAL) {
+    std::set<long long int> s;
+    
+    long long int k = 1;
+    s.insert(k);
+    long long int inc = 2;
+
+    while(k <= limit) {
+        for(unsigned i =  0; i < 4 && k <= limit; ++i) {
+            k += inc;
+            s.insert(k);
+        }
+
+        inc += 2;
+    }
+
+
+    in_diagonal = [=](long long int n) {
+        return s.find(n) != s.end();
+    };
 }
 
 inline long long int count_primes_diagonal(long long int a, long long int b) {
@@ -88,7 +104,7 @@ inline long long int count_primes_diagonal(long long int a, long long int b) {
 
 long long int solve(int percentage = 10) {
 	sieve();
-    populate_in_diagonal(LIMIT_POPULATE_IN_DIAGONAL);
+    populate_in_diagonal();
 
     assert(lower(1) == 2);
     assert(lower(2) == 10);
@@ -96,6 +112,7 @@ long long int solve(int percentage = 10) {
     assert(upper(1) == 9);
     assert(upper(2) == 25);
     assert(upper(3) == 49);
+    assert(diagonal(2) == 9);
     assert(diagonal(3) == 13);
     assert(in_diagonal(3));
     assert(in_diagonal(5));
@@ -112,14 +129,21 @@ long long int solve(int percentage = 10) {
     assert(count_primes(2, 11) == 5);
     assert(count_primes(3, 11) == 4);
     assert(count_primes_diagonal(1, 49) == 8);
-    assert(count_primes_diagonal(lower(3), upper(3)) == 8);
+    assert(count_primes_diagonal(lower(1), upper(1)) == 3);
+    assert(count_primes_diagonal(lower(2), upper(2)) == 2);
+    assert(count_primes_diagonal(lower(3), upper(3)) == 3);
 
     long long int n = 1;
+    long long int nprimes = 0;
     while(true) {
-        long long int numerator = count_primes(lower(n), upper(n));
+        std::cout << "n = " << n << std::endl;
+
+        nprimes += count_primes_diagonal(lower(n), upper(n));
+
+        long long int numerator = nprimes;
         long long int denominator = diagonal(n);
 
-        if((double(numerator) / double(denominator)) < double(percentage))
+        if((double(numerator) / double(denominator)) < (double(percentage)/100))
             break;
 
         ++n;
