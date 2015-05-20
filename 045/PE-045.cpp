@@ -67,11 +67,13 @@ long long int solve(long long int num = 3) {
 }
 
 int main(int argc, char *argv[]) {
+    /*
 	assert(triangle(285) == 40755);
 	assert(pentagonal(165) == 40755);
 	assert(hexagonal(143) == 40755);
 	assert(isPentagonal(40755));
 	assert(isHexagonal(40755));
+    */
 
 	int num = 3;
  	if(argc == 2)
