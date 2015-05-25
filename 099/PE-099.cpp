@@ -13,14 +13,17 @@ mpz_class mypow(const mpz_class& base, const mpz_class& exponent) {
 	return tmp * tmp * ((exponent % 2 == 1) ? base : mpz_class("1"));
 }
 
-int solve(const std::ifstream& ifs) {
+int solve(std::ifstream& ifs) {
 	long long int ans = 0;
 	mpz_class great("0");
 
-	long long int base, exponent;
+	std::string line;
 	int i = 0;
-	while(scanf("%lld,%lld\n", &base, &exponent) == 2) {
+
+	while(std::getline(ifs, line)) {
 		++i;
+		long long int base, exponent;
+		sscanf(line.c_str(), "%lld,%lld\n", &base, &exponent);
 		mpz_class n = mypow(mpz_class(std::to_string(base)),
 				    mpz_class(std::to_string(exponent)));
 
