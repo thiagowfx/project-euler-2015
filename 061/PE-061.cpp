@@ -89,6 +89,8 @@ long long int solve() {
 			}
 		}
 	} while(std::next_permutation(a.begin(), a.end()));
+
+	throw std::runtime_error("I shouldn't be here!");
 }
 
 int main() {
