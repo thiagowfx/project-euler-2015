@@ -91,7 +91,6 @@ long long int solve(long long int N = 1e6) {
 */
 
 	for(long long int i = 2; i <= N; ++i) {
-		std::cout << i << std::endl;
 		double next = double(i) / phi(i);
 		if(next > ratio) {
 			ratio = next;
