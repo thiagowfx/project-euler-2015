@@ -13,15 +13,15 @@ std::vector<long long int> sieve(long long int N) {
   std::vector<bool> in(N + 1, true);
 
   for (long long int i = 2; i * i <= N; ++i) {
-    if(in[i]) {
+    if (in[i]) {
       for (long long int j = i * i; j <= N; j += i) {
         in[j] = false;
       }
     }
   }
 
-  for(long long int i = 2; i <= N; ++i) {
-    if(in[i]) {
+  for (long long int i = 2; i <= N; ++i) {
+    if (in[i]) {
       primes.push_back(i);
     }
   }
@@ -32,7 +32,8 @@ std::vector<long long int> sieve(long long int N) {
 long long int solve(long long int N) {
   vector<long long int> primes = sieve(N);
   long long int ans = 0;
-  for (vector<long long int>::iterator it = primes.begin(); it != primes.end(); ++it)
+  for (vector<long long int>::iterator it = primes.begin(); it != primes.end();
+       ++it)
     ans += *it;
   return ans;
 }

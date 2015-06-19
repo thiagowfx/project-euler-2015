@@ -1,5 +1,6 @@
 /*
- * What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
+ * What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4,
+ * 5, 6, 7, 8 and 9?
  */
 
 #include <algorithm>
@@ -16,23 +17,23 @@ std::string next_perm(std::string s) {
 
   int crit = UNDEF;
 
-  for(unsigned i = size - 1; i >= 1; --i) {
-    if(s[i-1] < s[i]) {
+  for (unsigned i = size - 1; i >= 1; --i) {
+    if (s[i - 1] < s[i]) {
       crit = i - 1;
       break;
     }
   }
 
-  if(crit == UNDEF) {
-    std::reverse(s.begin(), s.end()); //sort
+  if (crit == UNDEF) {
+    std::reverse(s.begin(), s.end()); // sort
     return s;
   }
 
   else {
     int inext = UNDEF;
 
-    for(int i = size - 1; i > crit; --i) {
-      if(s[i] > s[crit]) {
+    for (int i = size - 1; i > crit; --i) {
+      if (s[i] > s[crit]) {
         inext = i;
         break;
       }
@@ -56,12 +57,12 @@ std::string solve(long long int N) {
 }
 
 int main(int argc, char *argv[]) {
-  //assert(next_perm("123") == "132");
-  //assert(next_perm("132") == "213");
-  //assert(next_perm("213") == "231");
-  //assert(next_perm("231") == "312");
-  //assert(next_perm("312") == "321");
-  //assert(next_perm("321") == "123");
+  // assert(next_perm("123") == "132");
+  // assert(next_perm("132") == "213");
+  // assert(next_perm("213") == "231");
+  // assert(next_perm("231") == "312");
+  // assert(next_perm("312") == "321");
+  // assert(next_perm("321") == "123");
 
   long long int number = atoll(argv[1]);
   std::cout << solve(number) << std::endl;

@@ -1,5 +1,6 @@
 /*
- * What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
+ * What is the greatest product of four adjacent numbers in the same direction
+ * (up, down, left, right, or diagonally) in the 20×20 grid?
  */
 
 #include <algorithm>
@@ -10,10 +11,10 @@
 #include <vector>
 using namespace std;
 
-long long int solve(std::ifstream& ifs, long long int N) {
+long long int solve(std::ifstream &ifs, long long int N) {
   long long int m[20][20];
   for (unsigned i = 0; i < 20; ++i)
-  	for (unsigned j = 0; j < 20; ++j)
+    for (unsigned j = 0; j < 20; ++j)
       ifs >> m[i][j];
 
   long long int ans = -1;
@@ -21,11 +22,11 @@ long long int solve(std::ifstream& ifs, long long int N) {
   // horizontally
   for (unsigned i = 0; i < 20; ++i) {
     for (unsigned j = 0; j <= 20 - N; ++j) {
-  	  long long int product = 1;
-  	  for (unsigned k = 0; k < N; ++k) {
+      long long int product = 1;
+      for (unsigned k = 0; k < N; ++k) {
         product *= m[i][j + k];
-  	  }
-  	  ans = max(ans, product);
+      }
+      ans = max(ans, product);
     }
   }
 
@@ -52,7 +53,7 @@ long long int solve(std::ifstream& ifs, long long int N) {
   }
 
   // diagonally (2)
-  for (unsigned i = N - 1; i < 20 ; ++i) {
+  for (unsigned i = N - 1; i < 20; ++i) {
     for (unsigned j = 0; j <= 20 - N; ++j) {
       long long int product = 1;
       for (unsigned k = 0; k < N; ++k) {

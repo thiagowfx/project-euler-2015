@@ -13,7 +13,7 @@ std::vector<long long int> sieve(long long int N) {
   std::vector<bool> in(N + 1, true);
 
   for (long long int i = 2; i <= N; ++i) {
-    if(in[i]) {
+    if (in[i]) {
       primes.push_back(i);
       for (long long int j = i * i; j <= N; j += i) {
         in[j] = false;
@@ -33,7 +33,7 @@ long long int solve(long long int N) {
   // this only hols for N >= 6, so:
   limit = max(limit, 13LL);
 
-  return sieve(limit)[N-1];
+  return sieve(limit)[N - 1];
 }
 
 int main(int argc, char *argv[]) {

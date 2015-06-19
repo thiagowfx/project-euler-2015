@@ -1,5 +1,6 @@
 /*
- * What is the value of the first triangle number to have over five hundred divisors?
+ * What is the value of the first triangle number to have over five hundred
+ * divisors?
  */
 
 #include <algorithm>
@@ -16,15 +17,15 @@ std::vector<long long int> sieve(long long int N) {
   std::vector<bool> in(N + 1, true);
 
   for (long long int i = 2; i * i <= N; ++i) {
-    if(in[i]) {
+    if (in[i]) {
       for (long long int j = i * i; j <= N; j += i) {
         in[j] = false;
       }
     }
   }
 
-  for(long long int i = 2; i <= N; ++i) {
-    if(in[i]) {
+  for (long long int i = 2; i <= N; ++i) {
+    if (in[i]) {
       primes.push_back(i);
     }
   }
@@ -36,9 +37,9 @@ inline long long int numdiv(long long int N) {
   long long int answer = 1;
   vector<long long int>::iterator it = primes_g.begin();
 
-  while(N != 1) {
+  while (N != 1) {
     long long int count = 0;
-    while(!(N % *it)) {
+    while (!(N % *it)) {
       ++count;
       N /= *it;
     }
@@ -53,7 +54,7 @@ long long int solve(long long int N) {
   long long int current = 1;
   long long int trial = 2;
 
-  while(true) {
+  while (true) {
     current += trial;
     ++trial;
 
@@ -62,7 +63,7 @@ long long int solve(long long int N) {
       return current;
   }
 
-  return -1; //error: this shouldn't happen
+  return -1; // error: this shouldn't happen
 }
 
 int main(int argc, char *argv[]) {

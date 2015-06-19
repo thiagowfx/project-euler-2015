@@ -9,7 +9,7 @@ using namespace std;
 mpz_class mypow(mpz_class base, int exponent) {
   if (!exponent)
     return mpz_class("1");
-  mpz_class tmp = mypow(base, exponent/2);
+  mpz_class tmp = mypow(base, exponent / 2);
   return tmp * tmp * (exponent & 1 ? base : mpz_class("1"));
 }
 
@@ -21,13 +21,9 @@ mpz_class sum_series(long long int N) {
   return sum;
 }
 
-inline mpz_class last_ten_digits(mpz_class x) {
-  return x % 1e10;
-}
+inline mpz_class last_ten_digits(mpz_class x) { return x % 1e10; }
 
-mpz_class solve(long long int N) {
-  return last_ten_digits(sum_series(N));
-}
+mpz_class solve(long long int N) { return last_ten_digits(sum_series(N)); }
 
 int main(int argc, char *argv[]) {
   long long int number = atoll(argv[1]);

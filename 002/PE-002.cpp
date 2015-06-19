@@ -15,7 +15,7 @@ mpz_class solve(mpz_class limit) {
   mpz_class fcurr("2");
   mpz_class fnext("3");
 
-  while(fcurr < limit) {
+  while (fcurr < limit) {
     sum += fcurr;
 
     fprev = fcurr + fnext;

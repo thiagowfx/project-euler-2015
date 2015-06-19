@@ -8,20 +8,21 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-#define sqr(x) ((x)*(x))
+#define sqr(x) ((x) * (x))
 
 long long int solve(long long int N) {
   long long int a, b;
 
-  for (a = 1; a <= N/2; ++a) {
-    for (b = 1; b <= N/2; ++b) {
-        long long int c = N - a - b;
-        if(sqr(a) + sqr(b) == sqr(c))
-            return a * b * c;
+  for (a = 1; a <= N / 2; ++a) {
+    for (b = 1; b <= N / 2; ++b) {
+      long long int c = N - a - b;
+      if (sqr(a) + sqr(b) == sqr(c))
+        return a * b * c;
     }
   }
 
-  return -1; // error: this shouldn't happen but it is here so the compiler becomes happy
+  return -1; // error: this shouldn't happen but it is here so the compiler
+             // becomes happy
 }
 
 int main(int argc, char *argv[]) {

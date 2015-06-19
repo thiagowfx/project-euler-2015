@@ -15,10 +15,10 @@
 using namespace std;
 
 mpz_class factorial(mpz_class number) {
-    if (number == mpz_class("0"))
-      return mpz_class("1");
-    else
-      return number * factorial(number - 1);
+  if (number == mpz_class("0"))
+    return mpz_class("1");
+  else
+    return number * factorial(number - 1);
 }
 
 long long int sum_digits(mpz_class number) {

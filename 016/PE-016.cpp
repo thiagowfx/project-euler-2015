@@ -17,7 +17,7 @@ using namespace std;
 mpz_class mypow(mpz_class base, int exp) {
   if (!exp)
     return mpz_class("1");
-  mpz_class partial = mypow(base, exp/2);
+  mpz_class partial = mypow(base, exp / 2);
   return partial * partial * (exp & 1 ? base : mpz_class("1"));
 }
 

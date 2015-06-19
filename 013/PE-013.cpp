@@ -1,5 +1,6 @@
 /*
- * Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
+ * Work out the first ten digits of the sum of the following one-hundred
+ * 50-digit numbers.
  */
 
 #include <cstdlib>
@@ -9,7 +10,7 @@
 #include <sstream>
 using namespace std;
 
-std::string solve(std::ifstream& ifs, long long int number) {
+std::string solve(std::ifstream &ifs, long long int number) {
   mpz_class sum("0");
 
   for (unsigned i = 0; i < 100; ++i) {

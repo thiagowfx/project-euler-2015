@@ -15,7 +15,7 @@ bool isPal(long long int x) {
   unsigned size = s.size();
 
   for (unsigned i = 0; i < size / 2; ++i) {
-    if (s[i] != s[size-1-i])
+    if (s[i] != s[size - 1 - i])
       return false;
   }
 

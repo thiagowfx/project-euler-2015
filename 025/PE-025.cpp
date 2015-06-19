@@ -20,12 +20,12 @@ long long int solve(long long int N) {
   mpz_class curr("1");
   long long int term = 1;
 
-  while(true) {
+  while (true) {
     prev += curr;
     swap(curr, prev);
     ++term;
 
-    if(ok(curr)) {
+    if (ok(curr)) {
       return term;
     }
   }

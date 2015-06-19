@@ -7,18 +7,18 @@
 using namespace std;
 
 long long int solve(long long int N) {
-    long long int ans = 1, f;
+  long long int ans = 1, f;
 
-    for(f = 2; f * f <= N; ++f) {
-        while(!(N % f)) {
-            ans = f;
-            N /= f;
-        }
+  for (f = 2; f * f <= N; ++f) {
+    while (!(N % f)) {
+      ans = f;
+      N /= f;
     }
-    if (N > 1)
-        ans = N;
+  }
+  if (N > 1)
+    ans = N;
 
-    return ans;
+  return ans;
 }
 
 int main(int argc, char *argv[]) {

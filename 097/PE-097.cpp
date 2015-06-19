@@ -5,15 +5,15 @@
 #include <gmpxx.h>
 
 std::string solve() {
-	mpz_class n;
-	mpz_ui_pow_ui(n.get_mpz_t(), 2, 7830457);
-	n *= 28433;
-	n += 1;
-	std::string s = n.get_str();
-	return s.substr(s.size() - 10);
+  mpz_class n;
+  mpz_ui_pow_ui(n.get_mpz_t(), 2, 7830457);
+  n *= 28433;
+  n += 1;
+  std::string s = n.get_str();
+  return s.substr(s.size() - 10);
 }
 
 int main() {
-	std::cout << solve() << std::endl;
-	return 0;
+  std::cout << solve() << std::endl;
+  return 0;
 }

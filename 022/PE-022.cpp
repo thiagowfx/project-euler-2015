@@ -10,22 +10,22 @@ std::vector<string> names;
 inline long long int alphavalue(const std::string s) {
   long long int ret = 0;
 
-  for(unsigned i = 1; i < s.size() - 1; ++i)
+  for (unsigned i = 1; i < s.size() - 1; ++i)
     ret += (s[i] + 1 - 'A');
 
   return ret;
 }
 
-long long int solve(std::ifstream& ifs) {
+long long int solve(std::ifstream &ifs) {
   std::string line;
-  while(std::getline(ifs, line, ','))
+  while (std::getline(ifs, line, ','))
     names.push_back(line);
 
   sort(names.begin(), names.end());
 
   long long int answer = 0;
 
-  for(unsigned i = 0; i < names.size(); ++i)
+  for (unsigned i = 0; i < names.size(); ++i)
     answer += (alphavalue(names[i]) * (i + 1));
 
   return answer;
